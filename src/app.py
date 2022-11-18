@@ -2,9 +2,10 @@ import os
 
 from flask import Flask
 
-from hello_world import say_hello
+from roku_sleep_timer import RokuSleepTimer
 
 app = Flask(__name__)
+sleep_timer = RokuSleepTimer()
 
 
 @app.route("/")
@@ -17,16 +18,68 @@ def home() -> str:
     return "Connected"
 
 
-@app.route("/hello/<name>")
-def hello(name: str) -> str:
+@app.route("/host")
+def host() -> str:
     """
-    Says hello!
+    Get IP address of Roku.
 
-    :param name: Name to say hello to
-
-    :return: Hello text
+    :return: IP address of Roku
     """
-    return say_hello(name)
+    return sleep_timer.host
+
+
+@app.route("/on")
+def on() -> str:
+    """
+    Turn TV on via Roku.
+
+    :return: On message
+    """
+    return sleep_timer.on()
+
+
+@app.route("/off")
+def off() -> str:
+    """
+    Turn TV off via Roku.
+
+    :return: Off message
+    """
+    return sleep_timer.off()
+
+
+@app.route("/discover")
+def discover() -> str:
+    """
+    Reset Roku connection to re-find first
+    Roku on the network.
+
+    :return: IP address of Roku
+    """
+    sleep_timer.discover()
+    return sleep_timer.host
+
+
+@app.route("/start/<int:minutes>")
+def schedule_sleep(minutes: int):
+    """
+    Schedule sleep job after the specified number of minutes.
+
+    :param minutes: Number of minutes to wait before sleeping
+
+    :return: Job schedule success message
+    """
+    return sleep_timer.schedule_sleep(minutes=minutes)
+
+
+@app.route("/stop")
+def stop_sleep() -> str:
+    """
+    Stop sleep timer by removing all jobs in scheduler.
+
+    :return: Stop message
+    """
+    return sleep_timer.stop_sleep()
 
 
 if __name__ == "__main__":

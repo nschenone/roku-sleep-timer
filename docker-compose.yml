@@ -4,8 +4,8 @@ services:
   flask:
     restart: unless-stopped
     build: .
-    image: docker_python_flask_template
-    container_name: docker_python_flask_template
+    image: roku_sleep
+    container_name: roku_sleep
     network_mode: "host"
     environment:
       - FLASK_PORT=${FLASK_PORT}
