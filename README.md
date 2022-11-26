@@ -1,7 +1,7 @@
 # Roku Sleep Timer
 Turn off Roku and TV after specified period of time. Self hosted dockerized application using Python, Flask, Docker, and Docker Compose.
 
-Companion repo to Medium article: `<LINK>`.
+Companion repo to [Medium article](https://medium.com/@nschenone/how-i-over-engineered-a-roku-sleep-timer-c1e5d9cb1e82).
 
 ## Table of Contents
 - [Overview](#overview)
@@ -57,7 +57,7 @@ Ensure you have [Docker](https://docs.docker.com/get-docker/), [Docker Compose](
 1. Update app with any changes by re-running `make up`
 1. Restart app by running `make restart`
 1. Stop app by running `make down`
-1. Follow medium article `<HERE>` to setup connectivity outside your local network
+1. Follow [Medium article](https://medium.com/@nschenone/how-i-over-engineered-a-roku-sleep-timer-c1e5d9cb1e82) to setup connectivity outside your local network
 
 ## License
 This template is made available under a modified MIT license. See the LICENSE file.
